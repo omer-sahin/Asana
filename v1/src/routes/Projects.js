@@ -1,11 +1,16 @@
-//! validasyon tanımı 
+//! validasyon tanımı
 //! validate midlevare
+const validate = require("../middlewares/validate");
 
+const authtenticate = require("../middlewares/authtenticate");
+const schema = require("../validations/Project");
 
-const express=require("express")
-const {create,index}=require("../controller/Project")
-const router=express.Router();
+const express = require("express");
+const { create, index } = require("../controller/Project");
+const router = express.Router();
 
-router.post("/",create)
-router.get("/",index)
-module.exports=router
+router
+  .route("/")
+  .post(authtenticate, validate(schema.createValidation), create);
+router.route("/").get(authtenticate, index);
+module.exports = router;

@@ -1,5 +1,6 @@
+const { object } = require("joi")
 const mongoose=require("mongoose")
-
+const logger=require("../scripts/logger/Project")
 
 const ProjectSchema=new mongoose.Schema({
     name:String,
@@ -8,6 +9,22 @@ const ProjectSchema=new mongoose.Schema({
     //     ref:"user"
     // }
 },{versionKey:false,timestamps:true})
+
+
+// ProjectSchema.pre("save",(Object)=>{
+//     console.log("öncesi",object )
+
+// })
+
+
+ProjectSchema.post("save",(doc)=>{
+    console.log("Sonrası",object )
+    logger.log({
+        level:"info",
+        message:doc
+    })
+
+})
 
 
 

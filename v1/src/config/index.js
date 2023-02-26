@@ -1,4 +1,4 @@
-const server=require("./server");
-module.exports=()=>{
-    server()
-}
+const server = require("./server");
+module.exports = () => {
+  server();
+};

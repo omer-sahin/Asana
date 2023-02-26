@@ -9,7 +9,7 @@ config();
 loaders();
 
 
-const {ProjeRoute} =require("./routes")
+const {ProjeRoute,UserRoute} =require("./routes")
 
 const app=express();
 
@@ -24,5 +24,6 @@ app.use(helmet());
 app.listen(process.env.APP_PORT,process.env.DB_HOST,()=>{
     console.log(`Sunucu ayağa kalktı...  http://${process.env.DB_HOST}:${process.env.APP_PORT}`)
     app.use("/projects",ProjeRoute);
+    app.use("/users",UserRoute);
 
 })
